@@ -21,29 +21,35 @@ class Home extends Component {
           <h3 style={{textAlign: 'center' }}>Vote Kedai Logo </h3>
           <p style={{textAlign: 'center' }}> Daparkan Gratis Voucher dengan memilih Logo Diskupi</p>
 
-          <div class="row">
+          <div class="row" align="center">
             <div class="col-lg-6 col-md-6 col-xs-6">
                 <img src="./img/diskuupi_1.png" width="100%" />
-                  
-                <button class="btn btn-outline-dark"> 
-                    <i class="fa fa-users"></i> 30
-                </button>
+                
+                <div class="btn-group">
 
-                <button type="button" class="btn btn-dark pull-right" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-check"></i> 
-                </button>
+                    <button class="btn btn-outline-dark" > 
+                        <i class="fa fa-users"></i> 30
+                    </button>
+
+                    <button type="button" class="btn btn-dark pull-right" data-toggle="modal" data-target="#exampleModal">
+                        <i class="fa fa-check"></i>
+                    </button>
+                </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-xs-6">
+            <div class="col-lg-6 col-md-6 col-xs-6"  >
                 {/* <img src="./img/diskuupi_2.png" width="400" /> */}
                 <img src="./img/diskuupi_2.png" width="100%" />
                   
-                  <button class="btn btn-outline-dark"> 
-                    <i class="fa fa-users"></i> 30
-                  </button>
+                    <div class="btn-group">
 
-                  <button type="button" class="btn btn-dark pull-right" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-check"></i>
-                  </button>
+                        <button class="btn btn-outline-dark" > 
+                            <i class="fa fa-users"></i> 30
+                        </button>
+
+                        <button type="button" class="btn btn-dark pull-right" data-toggle="modal" data-target="#exampleModal">
+                            <i class="fa fa-check"></i>
+                        </button>
+                    </div>
 
                 
               </div>
