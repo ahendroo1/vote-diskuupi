@@ -17,28 +17,12 @@ class Home extends Component {
 
   componentDidMount(){
 
-    this.setState({
-
-      img1 :this.views_img(1),
-      img2 : this.views_img(2)
-      
-    });
+    this.views_img(1)
+    this.views_img(2)
 
   }
 
     views_img(img_number){
-
-        // this.setState({inputUser: this.refs.email.value})
-
-        // user: this.refs.nama.value
-        // axios.get('http://localhost/diskuupi/index.php/api/img_number/'+ img_number)
-        // .then(function (response) {
-        //     console.log(response);
-        //     return response.count();
-        // })
-        // .catch(function (error) {
-        //     console.log(error);
-        // });
 
         const apiUrl = 'http://localhost/diskuupi/index.php/api/img_number/'+ img_number;
 
@@ -46,7 +30,7 @@ class Home extends Component {
         .then(res => res.json())
         .then(
             (result) => {
-                console.log(result.length);
+                // console.log(result.length);
                 if(img_number > 1){
 
                     this.setState({
@@ -76,8 +60,10 @@ class Home extends Component {
           <h3 style={{textAlign: 'center' }}>Vote Kedai Logo {this.state.inputUser}</h3>
           <p style={{textAlign: 'center' }}> Daparkan Gratis Voucher dengan memilih Logo Diskupi</p>
 
-          <div class="row" align="center">
+          <div class="row p-3" align="center">
             <div class="col-lg-6 col-md-6 col-xs-6">
+            
+            <h2 class="pull-left">1</h2>
                 <img src="./img/diskuupi_1.png" width="100%" />
                 
                 <div class="btn-group">
@@ -93,6 +79,7 @@ class Home extends Component {
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-xs-6"  >
+            <h2 class="pull-left">2</h2>
                 {/* <img src="./img/diskuupi_2.png" width="400" /> */}
                 <img src="./img/diskuupi_2.png" width="100%" />
                   
@@ -102,7 +89,7 @@ class Home extends Component {
                             <i class="fa fa-users"></i>  {this.state.img2}
                         </button>
 
-                        <button type="button" class="btn btn-dark pull-right" data-toggle="modal" data-target="#exampleModal">
+                        <button type="button" class="btn btn-dark pull-right" data-toggle="modal" data-target="#exampleModal2">
                             <i class="fa fa-check"></i>
                         </button>
                     </div>
@@ -110,20 +97,60 @@ class Home extends Component {
               </div>
             </div>
 
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Logo 2</h5>
+                            
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+
+                        </div>
+                        <div class="modal-body">
+                            <div clas="container">
+
+                                <img src="./img/diskuupi_2.png" width="100%" />
+                                <small class="text-danger"> * Masukkan data untuk mendapatkan voucher</small>
+
+                                <div class="form-group">
+                                    <input type="email" class="form-control" ref="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                                {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="number" class="form-control" ref="usia" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usia" />
+                                {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
+                                
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                        {/* <button type="button" class="btn btn-outline-dark btn-sm" data-dismiss="modal">Close</button> */}
+                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.sv_data()}} ><i class="fa fa-check"></i>  Vote</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
             <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                        <h5 class="modal-title" >{this.state.judul}</h5>
-                        <br />
-
+                            <h5 class="modal-title">Logo 1</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                        <small class="text-danger"> * Masukkan data untuk mendapatkan voucher</small>
                             <div clas="container">
+                                <img src="./img/diskuupi_1.png" width="100%" />
+                                <small class="text-danger"> * Masukkan data untuk mendapatkan voucher</small>
 
                                 {/* <img src="./img/voucher-coffee.jpg" width="100%" /> */}
 
@@ -142,7 +169,7 @@ class Home extends Component {
                         </div>
 
                         <div class="modal-footer">
-                        {/* <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> */}
+                        {/* <button type="button" class="btn btn-outline-dark btn-sm " data-dismiss="modal">Close</button> */}
                         <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.sv_data()}} ><i class="fa fa-check"></i>  Vote</button>
                         </div>
 
