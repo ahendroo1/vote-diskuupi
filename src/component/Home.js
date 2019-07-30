@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react';
+import axios from 'axios' ;
 
 class Home extends Component {
 
@@ -8,9 +9,63 @@ class Home extends Component {
       this.state = {
         resto: [],
         inputUser: '',
+        img1: '',
+        img2:'',
         judul: 'DISKUUPI'
       }
   }
+
+  componentDidMount(){
+
+    this.setState({
+
+      img1 :this.views_img(1),
+      img2 : this.views_img(2)
+      
+    });
+
+  }
+
+    views_img(img_number){
+
+        // this.setState({inputUser: this.refs.email.value})
+
+        // user: this.refs.nama.value
+        // axios.get('http://localhost/diskuupi/index.php/api/img_number/'+ img_number)
+        // .then(function (response) {
+        //     console.log(response);
+        //     return response.count();
+        // })
+        // .catch(function (error) {
+        //     console.log(error);
+        // });
+
+        const apiUrl = 'http://localhost/diskuupi/index.php/api/img_number/'+ img_number;
+
+        fetch(apiUrl)
+        .then(res => res.json())
+        .then(
+            (result) => {
+                console.log(result.length);
+                if(img_number > 1){
+
+                    this.setState({
+                        img2: result.length
+                    });
+
+                } else {
+
+                    this.setState({
+                        img1: result.length
+                    });
+                }
+            },
+            (error) => {
+                this.setState({ error });
+            }
+        )
+
+    }
 
   render(){
 
@@ -18,7 +73,7 @@ class Home extends Component {
       
         <div class="container p-5">
           
-          <h3 style={{textAlign: 'center' }}>Vote Kedai Logo </h3>
+          <h3 style={{textAlign: 'center' }}>Vote Kedai Logo {this.state.inputUser}</h3>
           <p style={{textAlign: 'center' }}> Daparkan Gratis Voucher dengan memilih Logo Diskupi</p>
 
           <div class="row" align="center">
@@ -28,12 +83,13 @@ class Home extends Component {
                 <div class="btn-group">
 
                     <button class="btn btn-outline-dark" > 
-                        <i class="fa fa-users"></i> 30
+                        <i class="fa fa-users"></i> {this.state.img1}
                     </button>
 
                     <button type="button" class="btn btn-dark pull-right" data-toggle="modal" data-target="#exampleModal">
                         <i class="fa fa-check"></i>
                     </button>
+
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-xs-6"  >
@@ -43,7 +99,7 @@ class Home extends Component {
                     <div class="btn-group">
 
                         <button class="btn btn-outline-dark" > 
-                            <i class="fa fa-users"></i> 30
+                            <i class="fa fa-users"></i>  {this.state.img2}
                         </button>
 
                         <button type="button" class="btn btn-dark pull-right" data-toggle="modal" data-target="#exampleModal">
@@ -51,7 +107,6 @@ class Home extends Component {
                         </button>
                     </div>
 
-                
               </div>
             </div>
 
@@ -62,31 +117,33 @@ class Home extends Component {
                         <h5 class="modal-title" >{this.state.judul}</h5>
                         <br />
 
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
                         </div>
                         <div class="modal-body">
                         <small class="text-danger"> * Masukkan data untuk mendapatkan voucher</small>
-                        <div clas="container">
-                            {/* <img src="./img/voucher-coffee.jpg" width="100%" /> */}
+                            <div clas="container">
+
+                                {/* <img src="./img/voucher-coffee.jpg" width="100%" /> */}
 
                                 <div class="form-group">
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                                    <input type="email" class="form-control" ref="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
                                 {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
                                 </div>
+                                
                                 <div class="form-group">
-                                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usia" />
+                                    <input type="number" class="form-control" ref="usia" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usia" />
                                 {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
                                 
                                 </div>
 
-                        </div>
+                            </div>
                         </div>
 
                         <div class="modal-footer">
                         {/* <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> */}
-                        <button type="button" class="btn btn-dark btn-sm"><i class="fa fa-check"></i>  Vote</button>
+                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.sv_data()}} ><i class="fa fa-check"></i>  Vote</button>
                         </div>
 
                     </div>
