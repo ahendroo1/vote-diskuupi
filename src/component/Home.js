@@ -4,27 +4,27 @@ import axios from 'axios' ;
 
 class Home extends Component {
 
-  constructor() {
-      super();
-      this.state = {
-        resto: [],
-        inputUser: '',
-        img1: '',
-        img2:'',
-        judul: 'DISKUUPI'
-      }
-  }
+    constructor() {
+        super();
+        this.state = {
+            resto: [],
+            inputUser: '',
+            img1: '',
+            img2:'',
+            judul: 'DISKUUPI'
+        }
+    }
 
-  componentDidMount(){
+    componentDidMount(){
 
-    this.views_img(1)
-    this.views_img(2)
+        this.views_img(1)
+        this.views_img(2)
 
-  }
+    }
 
     views_img(img_number){
 
-        const apiUrl = 'http://localhost/diskuupi/index.php/api/img_number/'+ img_number;
+        const apiUrl = 'http://diskuupi.epizy.com/index.php/api/img_number/'+ img_number;
 
         fetch(apiUrl)
         .then(res => res.json())
@@ -51,7 +51,56 @@ class Home extends Component {
 
     }
 
-  render(){
+    sv_data(img_numb){
+        const apiUrl = 'http://diskuupi.epizy.com/index.php/api/post_vote';
+
+        const myHeaders = new Headers();
+        myHeaders.append('Content-Type', 'application/json');
+        
+        if(img_numb === 1){
+            var data = {
+
+                email: this.refs.email.value,
+                usia: this.refs.usia.value,
+                img_number: img_numb
+    
+            }
+        } else {
+            var data = {
+
+                email: this.refs.email_.value,
+                usia: this.refs.usia_.value,
+                img_number: img_numb
+    
+            }
+
+        }
+
+        const options = {
+            method: 'POST',
+            body: JSON.stringify(data),
+            myHeaders
+        };
+
+        fetch(apiUrl, options)
+            .then(res => res.json())
+            .then(result => {
+                // this.setState({
+                // response: result,
+                // isAddProduct: false
+                // })
+                console.log(result);
+            },
+            (error) => {
+                console.log(error);
+                // this.setState({ error });
+            }
+        )
+    }
+
+
+
+    render(){
 
     return (
       
@@ -115,12 +164,12 @@ class Home extends Component {
                                 <small class="text-danger"> * Masukkan data untuk mendapatkan voucher</small>
 
                                 <div class="form-group">
-                                    <input type="email" class="form-control" ref="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                                    <input type="email" class="form-control" ref="email_" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
                                 {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
                                 </div>
                                 
                                 <div class="form-group">
-                                    <input type="number" class="form-control" ref="usia" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usia" />
+                                    <input type="number" class="form-control" ref="usia_" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usia" />
                                 {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
                                 
                                 </div>
@@ -130,7 +179,7 @@ class Home extends Component {
 
                         <div class="modal-footer">
                         {/* <button type="button" class="btn btn-outline-dark btn-sm" data-dismiss="modal">Close</button> */}
-                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.sv_data()}} ><i class="fa fa-check"></i>  Vote</button>
+                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.sv_data(2)}} ><i class="fa fa-check"></i>  Vote</button>
                         </div>
 
                     </div>
@@ -170,7 +219,7 @@ class Home extends Component {
 
                         <div class="modal-footer">
                         {/* <button type="button" class="btn btn-outline-dark btn-sm " data-dismiss="modal">Close</button> */}
-                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.sv_data()}} ><i class="fa fa-check"></i>  Vote</button>
+                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.sv_data(1)}} ><i class="fa fa-check"></i>  Vote</button>
                         </div>
 
                     </div>
