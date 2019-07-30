@@ -28,14 +28,14 @@ class Home extends Component {
 
     views_img(img_number){
 
-        const apiUrl = 'http://diskuupi.epizy.com/index.php/api/img_number/'+ img_number;
+        var apiUrl = 'http://diskuupi.epizy.com/index.php/api/img_number/'+ img_number;
 
-        fetch(apiUrl)
-        .then(res => res.json())
-        .then(
-            (result) => {
-                // console.log(result.length);
-                if(img_number > 1){
+        
+
+axios.get(apiUrl)
+  .then(function (response) {
+    // handle success
+    if(img_number > 1){
 
                     this.setState({
                         img2: result.length
@@ -47,11 +47,15 @@ class Home extends Component {
                         img1: result.length
                     });
                 }
-            },
-            (error) => {
-                this.setState({ error });
-            }
-        )
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  });
+
+
+
+
 
     }
 
