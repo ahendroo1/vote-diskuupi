@@ -11,6 +11,7 @@ class Home extends Component {
             inputUser: '',
             img1: '',
             img2:'',
+            voteResponse:'',
             judul: 'DISKUUPI'
         }
     }
@@ -19,6 +20,9 @@ class Home extends Component {
 
         this.views_img(1)
         this.views_img(2)
+        console.log(this.state.img1);
+        console.log(this.state.img2);
+
 
     }
 
@@ -85,10 +89,10 @@ class Home extends Component {
         fetch(apiUrl, options)
             .then(res => res.json())
             .then(result => {
-                // this.setState({
-                // response: result,
-                // isAddProduct: false
-                // })
+                this.setState({
+                    voteResponse: result.status,
+                    
+                })
                 console.log(result);
             },
             (error) => {
