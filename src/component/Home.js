@@ -24,14 +24,14 @@ class Home extends Component {
         let url1 = 'https://diskuupi-get.netlify.com/';
         this.views_img(1);
         this.views_img(2)
-        console.log(this.state.img1);
-        console.log(this.state.img2);
+        // console.log(this.state.img1);
+        // console.log(this.state.img2);
         // https://jsonip.com/?callback
 
         axios.get('https://jsonip.com/?callback')
           .then( (response) => {
             
-            console.log(response.data.ip)
+            // console.log(response.data.ip)
             this.setState({
                 ip_client: response.data.ip,
                 // css_vote: 'text-danger'
@@ -64,7 +64,7 @@ class Home extends Component {
         .then(res => res.json())
         .then(
             (result) => {
-                console.log(result);
+                // console.log(result);
                 if(img_number > 1){
 
                     this.setState({
@@ -161,7 +161,7 @@ class Home extends Component {
             // })
             // this.componentDidMount()
 
-            console.log(response);
+            // console.log(response);
 
             if (response.data.length > 0){
                 this.setState({
