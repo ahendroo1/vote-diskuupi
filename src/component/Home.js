@@ -19,50 +19,42 @@ class Home extends Component {
     componentDidMount(){
 
         let url1 = 'https://diskuupi-get.netlify.com/';
-        this.views_img();
-        // this.views_img(2)
+        this.views_img(1);
+        this.views_img(2)
         console.log(this.state.img1);
         console.log(this.state.img2);
 
     }
 
-    views_img(){
+    views_img(img_number){
 
-        const apiUrl = 'https://clever-fermat-44fab2.netlify.com/.netlify/functions/serverless-http/users';
+        const apiUrl = 'https://ancient-meadow-31096.herokuapp.com/getmember/' + img_number;
 
         // Make a request for a user with a given ID
-        axios.get(apiUrl)
-        .then(function (response) {
-        // handle success
-            console.log(response);
-        })
-        .catch(function (error) {
-        // handle error
-            console.log(error);
-        })
+       
 
-        // fetch(apiUrl)
-        // .then(res => res.json())
-        // .then(
-        //     (result) => {
-        //         console.log(result);
-        //         if(img_number > 1){
+        fetch(apiUrl)
+        .then(res => res.json())
+        .then(
+            (result) => {
+                console.log(result);
+                if(img_number > 1){
 
-        //             this.setState({
-        //                 img2: result
-        //             });
+                    this.setState({
+                        img2: result.length
+                    });
 
-        //         } else {
+                } else {
 
-        //             this.setState({
-        //                 img1: result
-        //             });
-        //         }
-        //     },
-        //     (error) => {
-        //         this.setState({ error });
-        //     }
-        // )
+                    this.setState({
+                        img1: result.length
+                    });
+                }
+            },
+            (error) => {
+                this.setState({ error });
+            }
+        )
     }
 
 
