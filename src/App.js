@@ -42,8 +42,8 @@ class App extends Component {
 
       </header>
 
-        <footer>
-          <div className="container">
+        <footer class="bg-navbar " align="center">
+          <div className="container p-5">
             <div class="navbar-nav mr-auto">
               <div class="nav-item active">
               <p class="">Made with ❤ in Surabaya</p>
