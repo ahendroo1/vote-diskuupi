@@ -110,6 +110,7 @@ class Home extends Component {
                 status_vote_member: _data.email+ " Anda berhasil Voting Logo "+_data.img_number+" DISKUUPI ",
                 css_vote: 'text-primary'
             })
+            this.componentDidMount()
 
 
           }).catch( (error) => {
