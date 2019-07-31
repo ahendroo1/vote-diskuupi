@@ -80,8 +80,8 @@ class Home extends Component {
             }
         } else {
             var data = {
-                email: this.refs._email.value,
-                usia: this.refs._usia.value,
+                email: this.refs.email_.value,
+                usia: this.refs.usia_.value,
                 img_number: img_numb
     
             }
