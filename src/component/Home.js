@@ -62,12 +62,25 @@ class Home extends Component {
 
     cekemail(img_numb){
 
-        var data = {
-            email: this.refs.email.value,
-            usia: this.refs.usia.value,
-            img_number: img_numb
+       
+
+        if(img_numb === 1){
+            var data = {
+                email: this.refs.email.value,
+                usia: this.refs.usia.value,
+                img_number: img_numb
+    
+            }
+        } else {
+            var data = {
+                email: this.refs._email.value,
+                usia: this.refs._usia.value,
+                img_number: img_numb
+    
+            }
 
         }
+
         axios.post('https://ancient-meadow-31096.herokuapp.com/cekemail/', data)
         .then( (response) => {
              this.setState({
