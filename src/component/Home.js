@@ -116,8 +116,9 @@ class Home extends Component {
       
         <div class="container p-5">
           
-          <h3 style={{textAlign: 'center' }}>Vote Kedai Logo {this.state.inputUser}</h3>
-          <p style={{textAlign: 'center' }}> Dapatkan Gratis Voucher dengan memilih Logo Diskupi</p>
+          <h3 style={{textAlign: 'center' }}>Yuk bantu kami memilih satu dari dua logo keren ini</h3>
+          <p style={{textAlign: 'center' }}> 
+Buat kamu yang beruntung, akan mendapatkan voucher belanja dari diskuupi loh </p>
 
           <div class="row p-3" align="center">
             <div class="col-lg-6 col-md-6 col-xs-6">

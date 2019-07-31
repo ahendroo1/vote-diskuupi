@@ -19,6 +19,8 @@ class App extends Component {
   render(){
 
     return (
+
+      <div>
       <header>
 
           <nav class="bg-navbar navbar navbar-expand-lg navbar-light ">
@@ -39,6 +41,21 @@ class App extends Component {
           <Route exact path="/voucher" component={Voucher} />
 
       </header>
+
+        <footer>
+          <div className="container">
+            <div class="navbar-nav mr-auto">
+              <div class="nav-item active">
+              <p class="">Made with ❤ in Surabaya</p>
+              </div>
+            </div>
+          </div>
+        </footer>
+
+
+
+      </div>
+      
   );
   }
 }
