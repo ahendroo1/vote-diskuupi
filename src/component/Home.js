@@ -14,7 +14,8 @@ class Home extends Component {
             status_vote_member:'',
             emailconfirm: null,
             judul: 'DISKUUPI',
-            css_vote : ''
+            css_vote : '',
+            ip_client:null
         }
     }
 
@@ -25,6 +26,22 @@ class Home extends Component {
         this.views_img(2)
         console.log(this.state.img1);
         console.log(this.state.img2);
+        // https://jsonip.com/?callback
+
+        axios.get('https://jsonip.com/?callback')
+          .then( (response) => {
+            
+            console.log(response.data.ip)
+            this.setState({
+                ip_client: response.data.ip,
+                // css_vote: 'text-danger'
+            })
+          }).catch( (error) => {
+            this.setState({
+                status_vote_member: "Anda Gagal Voting Logo  ",
+                css_vote: 'text-danger'
+            })
+          })
 
     }
 
@@ -75,14 +92,16 @@ class Home extends Component {
             var data = {
                 email: this.refs.email.value,
                 usia: this.refs.usia.value,
-                img_number: img_numb
+                img_number: img_numb,
+                ip_client: this.state.ip_client
     
             }
         } else {
             var data = {
                 email: this.refs.email_.value,
                 usia: this.refs.usia_.value,
-                img_number: img_numb
+                img_number: img_numb,
+                ip_client: this.state.ip_client
     
             }
 
@@ -107,9 +126,11 @@ class Home extends Component {
 
     cek_ip(_data){
 
-
         const apiUrl = 'https://ancient-meadow-31096.herokuapp.com/cekip/';
-        axios.get(apiUrl)
+        var data_ip = {
+            ip_client: this.state.ip_client
+        };
+        axios.post(apiUrl, data_ip)
           .then( (response) => {
         
             // this.successVote(response)
@@ -130,7 +151,6 @@ class Home extends Component {
                 // this.cek_ip(data);
                 this.sv_data(_data)
             }
-
 
           }).catch( (error) => {
             this.setState({
