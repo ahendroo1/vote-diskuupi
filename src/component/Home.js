@@ -94,7 +94,7 @@ class Home extends Component {
         
             // this.successVote(response) 
             this.setState({
-                status_vote_member: _data.email+ " Anda berhasil Voting Logo "+_data.img_numb+" DISKUUPI ",
+                status_vote_member: _data.email+ " Anda berhasil Voting Logo "+_data.img_number+" DISKUUPI ",
                 css_vote: 'text-primary'
             })
 
