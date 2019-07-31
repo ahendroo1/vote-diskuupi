@@ -87,7 +87,7 @@ class Home extends Component {
     cekInputVote(img_numb){
 
         if(img_numb === 1){
-            if(!this.refs.email.value && !this.refs.usia.value){
+            if(!this.refs.email.value || !this.refs.usia.value){
                 this.setState({
                     status_vote_member: "Maaf ya... untuk voting masukkan alamat email kamu dan usia kamu 🙏 ",
                     css_vote: 'text-primary'
@@ -105,7 +105,7 @@ class Home extends Component {
             }
         } else {
 
-            if(!this.refs.email_.value && !this.refs.usia_.value){
+            if(!this.refs.email_.value || !this.refs.usia_.value){
                 this.setState({
                     status_vote_member: "Maaf ya... untuk voting masukkan alamat email kamu dan usia kamu 🙏 ",
                     css_vote: 'text-primary'
