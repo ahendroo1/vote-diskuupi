@@ -99,10 +99,45 @@ class Home extends Component {
                     css_vote: 'text-danger'
                 });
             } else {
-                this.sv_data(data); 
+                this.cek_ip(data);
+                // this.sv_data(data)
             }
         })
+    }
+
+    cek_ip(_data){
+
+
+        const apiUrl = 'https://ancient-meadow-31096.herokuapp.com/cekip/';
+        axios.get(apiUrl)
+          .then( (response) => {
         
+            // this.successVote(response)
+            // this.setState({
+            //     status_vote_member: _data.email+ " Anda berhasil Voting Logo "+_data.img_number+" DISKUUPI ",
+            //     css_vote: 'text-primary'
+            // })
+            // this.componentDidMount()
+
+            console.log(response);
+
+            if (response.data.length > 0){
+                this.setState({
+                    status_vote_member: " Anda sudah votting dengan alamat Email " + response.data[0].email ,
+                    css_vote: 'text-danger'
+                });
+            } else {
+                // this.cek_ip(data);
+                this.sv_data(_data)
+            }
+
+
+          }).catch( (error) => {
+            this.setState({
+                status_vote_member: "Anda Gagal Voting Logo  ",
+                css_vote: 'text-danger'
+            })
+          })
     }
 
     sv_data(_data){
