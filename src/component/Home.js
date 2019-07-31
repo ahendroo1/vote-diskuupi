@@ -19,7 +19,7 @@ class Home extends Component {
     componentDidMount(){
 
         let url1 = 'https://diskuupi-get.netlify.com/';
-        this.views_img(1);
+        this.views_img();
         // this.views_img(2)
         console.log(this.state.img1);
         console.log(this.state.img2);
@@ -28,7 +28,7 @@ class Home extends Component {
 
     views_img(){
 
-        const apiUrl = 'https://diskuupi-get.netlify.com/';
+        const apiUrl = 'https://clever-fermat-44fab2.netlify.com/.netlify/functions/serverless-http/users';
 
         // Make a request for a user with a given ID
         axios.get(apiUrl)
@@ -122,13 +122,12 @@ class Home extends Component {
         <div class="container p-5">
           
           <h3 style={{textAlign: 'center' }}>Vote Kedai Logo {this.state.inputUser}</h3>
-          <p style={{textAlign: 'center' }}> Daparkan Gratis Voucher dengan memilih Logo Diskupi</p>
+          <p style={{textAlign: 'center' }}> Dapatkan Gratis Voucher dengan memilih Logo Diskupi</p>
 
           <div class="row p-3" align="center">
             <div class="col-lg-6 col-md-6 col-xs-6">
             
-            <h2 class="pull-left">1</h2>
-                <img src="./img/diskuupi_1.png" width="100%" />
+                <img src="./img/K1.jpg" width="100%" />
                 
                 <div class="btn-group">
 
@@ -143,9 +142,8 @@ class Home extends Component {
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-xs-6"  >
-            <h2 class="pull-left">2</h2>
                 {/* <img src="./img/diskuupi_2.png" width="400" /> */}
-                <img src="./img/diskuupi_2.png" width="100%" />
+                <img src="./img/K2.jpg" width="100%" />
                   
                     <div class="btn-group">
 
@@ -165,7 +163,6 @@ class Home extends Component {
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Logo 2</h5>
                             
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
@@ -175,16 +172,16 @@ class Home extends Component {
                         <div class="modal-body">
                             <div clas="container">
 
-                                <img src="./img/diskuupi_2.png" width="100%" />
-                                <small class="text-danger"> * Masukkan data untuk mendapatkan voucher</small>
+                                <img src="./img/K2.jpg" width="100%" />
+                                <small class="text-danger"> * Yuk isi data diri kamu, siapa tau kamu yg beruntung dapetin voucher diskuupi</small>
 
                                 <div class="form-group">
-                                    <input type="email" class="form-control" ref="email_" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                                    <input type="email" class="form-control" ref="email_" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Alamat Email Kamu" />
                                 {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
                                 </div>
                                 
                                 <div class="form-group">
-                                    <input type="number" class="form-control" ref="usia_" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usia" />
+                                    <input type="number" class="form-control" ref="usia_" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usia Kamu" />
                                 {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
                                 
                                 </div>
@@ -206,14 +203,13 @@ class Home extends Component {
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Logo 1</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
                             <div clas="container">
-                                <img src="./img/diskuupi_1.png" width="100%" />
+                                <img src="./img/K1.jpg" width="100%" />
                                 <small class="text-danger"> * Masukkan data untuk mendapatkan voucher</small>
 
                                 {/* <img src="./img/voucher-coffee.jpg" width="100%" /> */}
