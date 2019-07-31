@@ -247,7 +247,7 @@ Buat kamu yang beruntung, akan mendapatkan voucher belanja dari diskuupi loh </p
                                 <img src="./img/K2.jpg" width="100%" />
                                 <small class="text-success"> * Yuk isi data diri kamu, siapa tau kamu yg beruntung dapetin voucher diskuupi</small>
 
-                                <small class={this.state.css_vote}>{this.state.status_vote_member}</small>
+                                <small class={this.state.css_vote}><br />{this.state.status_vote_member}</small>
 
                                 <div class="form-group">
                                     <input type="email" class="form-control" ref="email_" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Alamat Email Kamu" />
