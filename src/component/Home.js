@@ -142,7 +142,7 @@ class Home extends Component {
 Buat kamu yang beruntung, akan mendapatkan voucher belanja dari diskuupi loh </p>
 
           <div class="row p-3" align="center">
-            <div class="col-lg-6 col-md-6 col-xs-6">
+            <div class="col-lg-6 col-md-6 col-xs-6 mt-3">
             
                 <img src="./img/K1.jpg" width="100%" />
                 
@@ -158,7 +158,7 @@ Buat kamu yang beruntung, akan mendapatkan voucher belanja dari diskuupi loh </p
 
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6 col-xs-6"  >
+            <div class="col-lg-6 col-md-6 col-xs-6 mt-3"  >
                 {/* <img src="./img/diskuupi_2.png" width="400" /> */}
                 <img src="./img/K2.jpg" width="100%" />
                   
