@@ -18,40 +18,51 @@ class Home extends Component {
 
     componentDidMount(){
 
-        this.views_img(1)
-        this.views_img(2)
+        let url1 = 'https://diskuupi-get.netlify.com/';
+        this.views_img(1);
+        // this.views_img(2)
         console.log(this.state.img1);
         console.log(this.state.img2);
 
-
     }
 
-    views_img(img_number){
+    views_img(){
 
-        const apiUrl = 'http://diskuupi.epizy.com/index.php/api/img_number/'+ img_number;
+        const apiUrl = 'https://diskuupi-get.netlify.com/';
 
-        fetch(apiUrl)
-        .then(res => res.json())
-        .then(
-            (result) => {
-                // console.log(result.length);
-                if(img_number > 1){
+        // Make a request for a user with a given ID
+        axios.get(apiUrl)
+        .then(function (response) {
+        // handle success
+            console.log(response);
+        })
+        .catch(function (error) {
+        // handle error
+            console.log(error);
+        })
 
-                    this.setState({
-                        img2: result.length
-                    });
+        // fetch(apiUrl)
+        // .then(res => res.json())
+        // .then(
+        //     (result) => {
+        //         console.log(result);
+        //         if(img_number > 1){
 
-                } else {
+        //             this.setState({
+        //                 img2: result
+        //             });
 
-                    this.setState({
-                        img1: result.length
-                    });
-                }
-            },
-            (error) => {
-                this.setState({ error });
-            }
-        )
+        //         } else {
+
+        //             this.setState({
+        //                 img1: result
+        //             });
+        //         }
+        //     },
+        //     (error) => {
+        //         this.setState({ error });
+        //     }
+        // )
 
     }
 
