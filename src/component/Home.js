@@ -28,6 +28,13 @@ class Home extends Component {
 
     }
 
+    alertNull(){
+        this.setState({
+            css_vote: '',
+            status_vote_member: ''
+        })
+    }
+
 
     views_img(img_number){
 
@@ -174,7 +181,7 @@ Buat kamu yang beruntung, akan mendapatkan voucher belanja dari diskuupi loh </p
                     <div class="modal-content">
                         <div class="modal-header">
                             
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick={() => this.alertNull()}>
                                 <span aria-hidden="true">&times;</span>
                             </button>
 
@@ -202,7 +209,7 @@ Buat kamu yang beruntung, akan mendapatkan voucher belanja dari diskuupi loh </p
                         </div>
 
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-dark btn-sm" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-dark btn-sm" data-dismiss="modal" onClick={() => this.alertNull()}>Close</button>
                         <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.cekemail(2)}} ><i class="fa fa-check"></i>  Vote</button>
                         </div>
 
@@ -215,7 +222,7 @@ Buat kamu yang beruntung, akan mendapatkan voucher belanja dari diskuupi loh </p
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" onClick={() => this.alertNull()}>
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -242,7 +249,7 @@ Buat kamu yang beruntung, akan mendapatkan voucher belanja dari diskuupi loh </p
                         </div>
 
                         <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-dark btn-sm " data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-dark btn-sm " data-dismiss="modal" onClick={() => this.alertNull()}>Close</button>
                         <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.cekemail(1)}} ><i class="fa fa-check"></i>  Vote</button>
                         </div>
 
