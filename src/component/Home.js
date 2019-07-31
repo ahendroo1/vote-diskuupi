@@ -84,28 +84,49 @@ class Home extends Component {
         )
     }
 
-    cekemail(img_numb){
-
-       
+    cekInputVote(img_numb){
 
         if(img_numb === 1){
-            var data = {
-                email: this.refs.email.value,
-                usia: this.refs.usia.value,
-                img_number: img_numb,
-                ip_client: this.state.ip_client
-    
+            if(!this.refs.email.value && !this.refs.usia.value){
+                this.setState({
+                    status_vote_member: "Maaf ya... untuk voting masukkan alamat email kamu dan usia kamu 🙏 ",
+                    css_vote: 'text-primary'
+                });
+            } else {
+                var data = {
+                    email: this.refs.email.value,
+                    usia: this.refs.usia.value,
+                    img_number: img_numb,
+                    ip_client: this.state.ip_client
+        
+                }
+
+                this.cekemail(data)
             }
         } else {
-            var data = {
-                email: this.refs.email_.value,
-                usia: this.refs.usia_.value,
-                img_number: img_numb,
-                ip_client: this.state.ip_client
-    
+
+            if(!this.refs.email_.value && !this.refs.usia_.value){
+                this.setState({
+                    status_vote_member: "Maaf ya... untuk voting masukkan alamat email kamu dan usia kamu 🙏 ",
+                    css_vote: 'text-primary'
+                });
+            } else {
+                var data = {
+                    email: this.refs.email_.value,
+                    usia: this.refs.usia_.value,
+                    img_number: img_numb,
+                    ip_client: this.state.ip_client
+        
+                }
+                this.cekemail(data)
             }
 
         }
+    }
+
+    cekemail(data){
+
+    
 
         axios.post('https://ancient-meadow-31096.herokuapp.com/cekemail/', data)
         .then( (response) => {
@@ -265,7 +286,7 @@ Buat kamu yang beruntung, akan mendapatkan voucher belanja dari diskuupi loh </p
 
                         <div class="modal-footer">
                         <button type="button" class="btn btn-outline-dark btn-sm" data-dismiss="modal" onClick={() => this.alertNull()}>Close</button>
-                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.cekemail(2)}} ><i class="fa fa-check"></i>  Vote</button>
+                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.cekInputVote(2)}} ><i class="fa fa-check"></i>  Vote</button>
                         </div>
 
                     </div>
@@ -285,7 +306,7 @@ Buat kamu yang beruntung, akan mendapatkan voucher belanja dari diskuupi loh </p
                             <div clas="container">
                                 <img src="./img/K1.jpg" width="100%" />
                                 <small class="text-success"> * Yuk isi data diri kamu, siapa tau kamu yg beruntung dapetin voucher diskuupi</small>
-                                <small class={this.state.css_vote}>{this.state.status_vote_member}</small>
+                                <small class={this.state.css_vote}><br />{this.state.status_vote_member}</small>
 
                                 {/* <img src="./img/voucher-coffee.jpg" width="100%" /> */}
 
@@ -305,7 +326,7 @@ Buat kamu yang beruntung, akan mendapatkan voucher belanja dari diskuupi loh </p
 
                         <div class="modal-footer">
                         <button type="button" class="btn btn-outline-dark btn-sm " data-dismiss="modal" onClick={() => this.alertNull()}>Close</button>
-                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.cekemail(1)}} ><i class="fa fa-check"></i>  Vote</button>
+                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.cekInputVote(1)}} ><i class="fa fa-check"></i>  Vote</button>
                         </div>
 
                     </div>
