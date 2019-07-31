@@ -144,7 +144,7 @@ class Home extends Component {
 
             if (response.data.length > 0){
                 this.setState({
-                    status_vote_member: " Anda sudah votting dengan alamat Email " + response.data[0].email ,
+                    status_vote_member: " Maaf ya... voting logo cuma bisa dilakukan 1x 🙏 ",
                     css_vote: 'text-danger'
                 });
             } else {
@@ -154,7 +154,7 @@ class Home extends Component {
 
           }).catch( (error) => {
             this.setState({
-                status_vote_member: "Anda Gagal Voting Logo  ",
+                status_vote_member: "Maaf ya... voting logo cuma bisa dilakukan 1x 🙏 ",
                 css_vote: 'text-danger'
             })
           })
@@ -169,7 +169,7 @@ class Home extends Component {
         
             // this.successVote(response) 
             this.setState({
-                status_vote_member: _data.email+ " Anda berhasil Voting Logo "+_data.img_number+" DISKUUPI ",
+                status_vote_member: "👌  Makasih yah sudah di bantu voting logo Diskuupi",
                 css_vote: 'text-primary'
             })
             this.componentDidMount()
@@ -177,7 +177,7 @@ class Home extends Component {
 
           }).catch( (error) => {
             this.setState({
-                status_vote_member: "Anda Gagal Voting Logo  ",
+                status_vote_member: "Maaf ya... voting logo cuma bisa dilakukan 1x 🙏",
                 css_vote: 'text-danger'
             })
           })
