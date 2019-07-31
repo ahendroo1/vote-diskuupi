@@ -63,8 +63,8 @@ class Home extends Component {
         //         this.setState({ error });
         //     }
         // )
-
     }
+
 
     sv_data(img_numb){
         const apiUrl = 'http://diskuupi.epizy.com/index.php/api/post_vote';
