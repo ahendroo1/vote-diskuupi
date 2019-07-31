@@ -114,7 +114,7 @@ class Home extends Component {
             })
             if (response.data.length > 0){
                 this.setState({
-                    status_vote_member: response.data[0].email + " Anda sudah votting ",
+                    status_vote_member: "Maaf ya... voting logo cuma bisa dilakukan 1x 🙏 ",
                     css_vote: 'text-danger'
                 });
             } else {
