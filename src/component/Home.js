@@ -7,11 +7,12 @@ class Home extends Component {
     constructor() {
         super();
         this.state = {
-            resto: [],
+            ckEmail: 0,
             inputUser: '',
             img1: '',
             img2:'',
-            voteResponse:'',
+            status_vote_member:'',
+            emailconfirm: null,
             judul: 'DISKUUPI'
         }
     }
@@ -25,6 +26,7 @@ class Home extends Component {
         console.log(this.state.img2);
 
     }
+
 
     views_img(img_number){
 
@@ -57,52 +59,50 @@ class Home extends Component {
         )
     }
 
+    cekemail(img_numb){
 
-    sv_data(img_numb){
-        const apiUrl = 'http://diskuupi.epizy.com/index.php/api/post_vote';
-
-        const myHeaders = new Headers();
-        myHeaders.append('Content-Type', 'application/json');
-        
-        if(img_numb === 1){
-            var data = {
-
-                email: this.refs.email.value,
-                usia: this.refs.usia.value,
-                img_number: img_numb
-    
-            }
-        } else {
-            var data = {
-
-                email: this.refs.email_.value,
-                usia: this.refs.usia_.value,
-                img_number: img_numb
-    
-            }
+        var data = {
+            email: this.refs.email.value,
+            usia: this.refs.usia.value,
+            img_number: img_numb
 
         }
-
-        const options = {
-            method: 'POST',
-            body: JSON.stringify(data),
-            myHeaders
-        };
-
-        fetch(apiUrl, options)
-            .then(res => res.json())
-            .then(result => {
+        axios.post('https://ancient-meadow-31096.herokuapp.com/cekemail/', data)
+        .then( (response) => {
+             this.setState({
+                ckEmail: response.data.length
+            })
+            if (response.data.length > 0){
                 this.setState({
-                    voteResponse: result.status,
-                    
-                })
-                console.log(result);
-            },
-            (error) => {
-                console.log(error);
-                // this.setState({ error });
+                    status_vote_member: response.data[0].email + " Anda sudah votting "
+                });
+            } else {
+                this.sv_data(data); 
             }
-        )
+        })
+        
+
+    }
+
+    sv_data(_data){
+
+        const apiUrl = 'https://ancient-meadow-31096.herokuapp.com/postmember/';
+    
+        axios.post(apiUrl, _data)
+          .then( (response) => {
+        
+            // this.successVote(response) 
+            this.setState({
+                status_vote_member: _data.email+ " Anda berhasil Voting Logo "+_data.img_numb+" DISKUUPI "
+            })
+
+
+          }).catch( (error) => {
+            this.setState({
+                status_vote_member: "Anda Gagal Voting Logo  "
+            })
+          })
+
     }
 
 
@@ -165,7 +165,9 @@ class Home extends Component {
                             <div clas="container">
 
                                 <img src="./img/K2.jpg" width="100%" />
-                                <small class="text-danger"> * Yuk isi data diri kamu, siapa tau kamu yg beruntung dapetin voucher diskuupi</small>
+                                <small class="text-success"> * Yuk isi data diri kamu, siapa tau kamu yg beruntung dapetin voucher diskuupi</small>
+
+                                <p class="text-danger">{this.state.status_vote_member}</p>
 
                                 <div class="form-group">
                                     <input type="email" class="form-control" ref="email_" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Alamat Email Kamu" />
@@ -183,7 +185,7 @@ class Home extends Component {
 
                         <div class="modal-footer">
                         {/* <button type="button" class="btn btn-outline-dark btn-sm" data-dismiss="modal">Close</button> */}
-                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.sv_data(2)}} ><i class="fa fa-check"></i>  Vote</button>
+                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.cekemail(2)}} ><i class="fa fa-check"></i>  Vote</button>
                         </div>
 
                     </div>
@@ -202,17 +204,18 @@ class Home extends Component {
                         <div class="modal-body">
                             <div clas="container">
                                 <img src="./img/K1.jpg" width="100%" />
-                                <small class="text-danger"> * Masukkan data untuk mendapatkan voucher</small>
+                                <small class="text-success"> * Yuk isi data diri kamu, siapa tau kamu yg beruntung dapetin voucher diskuupi</small>
+                                <p class="text-danger">{this.state.status_vote_member}</p>
 
                                 {/* <img src="./img/voucher-coffee.jpg" width="100%" /> */}
 
                                 <div class="form-group">
-                                    <input type="email" class="form-control" ref="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+                                    <input type="email" class="form-control" ref="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Alamat Email Kamu" />
                                 {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
                                 </div>
                                 
                                 <div class="form-group">
-                                    <input type="number" class="form-control" ref="usia" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usia" />
+                                    <input type="number" class="form-control" ref="usia" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Usia Kamu" />
                                 {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
                                 
                                 </div>
@@ -222,7 +225,7 @@ class Home extends Component {
 
                         <div class="modal-footer">
                         {/* <button type="button" class="btn btn-outline-dark btn-sm " data-dismiss="modal">Close</button> */}
-                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.sv_data(1)}} ><i class="fa fa-check"></i>  Vote</button>
+                        <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.cekemail(1)}} ><i class="fa fa-check"></i>  Vote</button>
                         </div>
 
                     </div>
