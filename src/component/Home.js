@@ -13,7 +13,8 @@ class Home extends Component {
             img2:'',
             status_vote_member:'',
             emailconfirm: null,
-            judul: 'DISKUUPI'
+            judul: 'DISKUUPI',
+            css_vote : ''
         }
     }
 
@@ -74,14 +75,14 @@ class Home extends Component {
             })
             if (response.data.length > 0){
                 this.setState({
-                    status_vote_member: response.data[0].email + " Anda sudah votting "
+                    status_vote_member: response.data[0].email + " Anda sudah votting ",
+                    css_vote: 'text-danger'
                 });
             } else {
                 this.sv_data(data); 
             }
         })
         
-
     }
 
     sv_data(_data){
@@ -93,13 +94,15 @@ class Home extends Component {
         
             // this.successVote(response) 
             this.setState({
-                status_vote_member: _data.email+ " Anda berhasil Voting Logo "+_data.img_numb+" DISKUUPI "
+                status_vote_member: _data.email+ " Anda berhasil Voting Logo "+_data.img_numb+" DISKUUPI ",
+                css_vote: 'text-primary'
             })
 
 
           }).catch( (error) => {
             this.setState({
-                status_vote_member: "Anda Gagal Voting Logo  "
+                status_vote_member: "Anda Gagal Voting Logo  ",
+                css_vote: 'text-danger'
             })
           })
 
@@ -167,7 +170,7 @@ class Home extends Component {
                                 <img src="./img/K2.jpg" width="100%" />
                                 <small class="text-success"> * Yuk isi data diri kamu, siapa tau kamu yg beruntung dapetin voucher diskuupi</small>
 
-                                <p class="text-danger">{this.state.status_vote_member}</p>
+                                <p class={this.state.css_vote}>{this.state.status_vote_member}</p>
 
                                 <div class="form-group">
                                     <input type="email" class="form-control" ref="email_" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Alamat Email Kamu" />
@@ -184,7 +187,7 @@ class Home extends Component {
                         </div>
 
                         <div class="modal-footer">
-                        {/* <button type="button" class="btn btn-outline-dark btn-sm" data-dismiss="modal">Close</button> */}
+                        <button type="button" class="btn btn-outline-dark btn-sm" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.cekemail(2)}} ><i class="fa fa-check"></i>  Vote</button>
                         </div>
 
@@ -205,7 +208,7 @@ class Home extends Component {
                             <div clas="container">
                                 <img src="./img/K1.jpg" width="100%" />
                                 <small class="text-success"> * Yuk isi data diri kamu, siapa tau kamu yg beruntung dapetin voucher diskuupi</small>
-                                <p class="text-danger">{this.state.status_vote_member}</p>
+                                <p class={this.state.css_vote}>{this.state.status_vote_member}</p>
 
                                 {/* <img src="./img/voucher-coffee.jpg" width="100%" /> */}
 
@@ -224,7 +227,7 @@ class Home extends Component {
                         </div>
 
                         <div class="modal-footer">
-                        {/* <button type="button" class="btn btn-outline-dark btn-sm " data-dismiss="modal">Close</button> */}
+                        <button type="button" class="btn btn-outline-dark btn-sm " data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-dark btn-sm" onClick={() => {this.cekemail(1)}} ><i class="fa fa-check"></i>  Vote</button>
                         </div>
 
