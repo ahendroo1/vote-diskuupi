@@ -21,7 +21,7 @@ class App extends Component {
     return (
 
       <div>
-          <image src="./img_comingsoon.jpeg" width="100%" />
+          <image src="img_comingsoon.jpeg" width="100%" />
       </div>
       
   );
